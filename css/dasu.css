@@ -253,7 +253,7 @@
   height: 100%;
 }
 .dasu .tab {
-  max-height: 380px;
+  max-height: 400px;
 }
 .dasu .tab.biography {
   flex: 1;
@@ -318,7 +318,8 @@
   align-items: center;
   display: flex;
 }
-.dasu .items-list .item-name h3, .dasu .items-list .item-name h4 {
+.dasu .items-list .item-name h3,
+.dasu .items-list .item-name h4 {
   margin: 0;
   white-space: nowrap;
   overflow-x: hidden;
@@ -419,7 +420,8 @@
   align-items: center;
   display: flex;
 }
-.dasu .effects-list .effect-name h3, .dasu .effects-list .effect-name h4 {
+.dasu .effects-list .effect-name h3,
+.dasu .effects-list .effect-name h4 {
   margin: 0;
   white-space: nowrap;
   overflow-x: hidden;
@@ -489,4 +491,4 @@
 }
 .dasu .effects .item .effect-controls {
   border: none;
-}/*# sourceMappingURL=dasu.css.map */
+}

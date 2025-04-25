@@ -19,66 +19,66 @@ const sheets = foundry.appv1.sheets;
 // Add key classes to the global scope so they can be more easily used
 // by downstream developers
 globalThis.dasu = {
-  documents: {
-    DASUActor,
-    DASUItem,
-  },
-  applications: {
-    DASUActorSheet,
-    DASUItemSheet,
-  },
-  utils: {
-    rollItemMacro,
-  },
-  models,
+	documents: {
+		DASUActor,
+		DASUItem,
+	},
+	applications: {
+		DASUActorSheet,
+		DASUItemSheet,
+	},
+	utils: {
+		rollItemMacro,
+	},
+	models,
 };
 
 Hooks.once('init', function () {
-  // Add custom constants for configuration.
-  CONFIG.DASU = DASU;
+	// Add custom constants for configuration.
+	CONFIG.DASU = DASU;
 
-  /**
-   * Set an initiative formula for the system
-   * @type {String}
-   */
-  CONFIG.Combat.initiative = {
-    formula: '1d20 + @abilities.dex.mod',
-    decimals: 2,
-  };
+	/**
+	 * Set an initiative formula for the system
+	 * @type {String}
+	 */
+	CONFIG.Combat.initiative = {
+		formula: '1d20 + @abilities.dex.mod',
+		decimals: 2,
+	};
 
-  // Define custom Document and DataModel classes
-  CONFIG.Actor.documentClass = DASUActor;
+	// Define custom Document and DataModel classes
+	CONFIG.Actor.documentClass = DASUActor;
 
-  // Note that you don't need to declare a DataModel
-  // for the base actor/item classes - they are included
-  // with the Character/NPC as part of super.defineSchema()
-  CONFIG.Actor.dataModels = {
-    character: models.DASUCharacter,
-    npc: models.DASUNPC,
-  };
-  CONFIG.Item.documentClass = DASUItem;
-  CONFIG.Item.dataModels = {
-    gear: models.DASUGear,
-    feature: models.DASUFeature,
-    spell: models.DASUSpell,
-  };
+	// Note that you don't need to declare a DataModel
+	// for the base actor/item classes - they are included
+	// with the Character/NPC as part of super.defineSchema()
+	CONFIG.Actor.dataModels = {
+		character: models.DASUCharacter,
+		npc: models.DASUNPC,
+	};
+	CONFIG.Item.documentClass = DASUItem;
+	CONFIG.Item.dataModels = {
+		gear: models.DASUGear,
+		feature: models.DASUFeature,
+		spell: models.DASUSpell,
+	};
 
-  // Active Effects are never copied to the Actor,
-  // but will still apply to the Actor from within the Item
-  // if the transfer property on the Active Effect is true.
-  CONFIG.ActiveEffect.legacyTransferral = false;
+	// Active Effects are never copied to the Actor,
+	// but will still apply to the Actor from within the Item
+	// if the transfer property on the Active Effect is true.
+	CONFIG.ActiveEffect.legacyTransferral = false;
 
-  // Register sheet application classes
-  collections.Actors.unregisterSheet('core', sheets.ActorSheet);
-  collections.Actors.registerSheet('dasu', DASUActorSheet, {
-    makeDefault: true,
-    label: 'DASU.SheetLabels.Actor',
-  });
-  collections.Items.unregisterSheet('core', sheets.ItemSheet);
-  collections.Items.registerSheet('dasu', DASUItemSheet, {
-    makeDefault: true,
-    label: 'DASU.SheetLabels.Item',
-  });
+	// Register sheet application classes
+	collections.Actors.unregisterSheet('core', sheets.ActorSheet);
+	collections.Actors.registerSheet('dasu', DASUActorSheet, {
+		makeDefault: true,
+		label: 'DASU.SheetLabels.Actor',
+	});
+	collections.Items.unregisterSheet('core', sheets.ItemSheet);
+	collections.Items.registerSheet('dasu', DASUItemSheet, {
+		makeDefault: true,
+		label: 'DASU.SheetLabels.Item',
+	});
 });
 
 /* -------------------------------------------- */
@@ -87,7 +87,7 @@ Hooks.once('init', function () {
 
 // If you need to add Handlebars helpers, here is a useful example:
 Handlebars.registerHelper('toLowerCase', function (str) {
-  return str.toLowerCase();
+	return str.toLowerCase();
 });
 
 /* -------------------------------------------- */
@@ -95,8 +95,8 @@ Handlebars.registerHelper('toLowerCase', function (str) {
 /* -------------------------------------------- */
 
 Hooks.once('ready', function () {
-  // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  Hooks.on('hotbarDrop', (bar, data, slot) => createDocMacro(data, slot));
+	// Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
+	Hooks.on('hotbarDrop', (bar, data, slot) => createDocMacro(data, slot));
 });
 
 /* -------------------------------------------- */
@@ -111,32 +111,28 @@ Hooks.once('ready', function () {
  * @returns {Promise}
  */
 async function createDocMacro(data, slot) {
-  // First, determine if this is a valid owned item.
-  if (data.type !== 'Item') return;
-  if (!data.uuid.includes('Actor.') && !data.uuid.includes('Token.')) {
-    return ui.notifications.warn(
-      'You can only create macro buttons for owned Items'
-    );
-  }
-  // If it is, retrieve it based on the uuid.
-  const item = await Item.fromDropData(data);
+	// First, determine if this is a valid owned item.
+	if (data.type !== 'Item') return;
+	if (!data.uuid.includes('Actor.') && !data.uuid.includes('Token.')) {
+		return ui.notifications.warn('You can only create macro buttons for owned Items');
+	}
+	// If it is, retrieve it based on the uuid.
+	const item = await Item.fromDropData(data);
 
-  // Create the macro command using the uuid.
-  const command = `game.dasu.rollItemMacro("${data.uuid}");`;
-  let macro = game.macros.find(
-    (m) => m.name === item.name && m.command === command
-  );
-  if (!macro) {
-    macro = await Macro.create({
-      name: item.name,
-      type: 'script',
-      img: item.img,
-      command: command,
-      flags: { 'dasu.itemMacro': true },
-    });
-  }
-  game.user.assignHotbarMacro(macro, slot);
-  return false;
+	// Create the macro command using the uuid.
+	const command = `game.dasu.rollItemMacro("${data.uuid}");`;
+	let macro = game.macros.find((m) => m.name === item.name && m.command === command);
+	if (!macro) {
+		macro = await Macro.create({
+			name: item.name,
+			type: 'script',
+			img: item.img,
+			command: command,
+			flags: { 'dasu.itemMacro': true },
+		});
+	}
+	game.user.assignHotbarMacro(macro, slot);
+	return false;
 }
 
 /**
@@ -145,22 +141,20 @@ async function createDocMacro(data, slot) {
  * @param {string} itemUuid
  */
 function rollItemMacro(itemUuid) {
-  // Reconstruct the drop data so that we can load the item.
-  const dropData = {
-    type: 'Item',
-    uuid: itemUuid,
-  };
-  // Load the item from the uuid.
-  Item.fromDropData(dropData).then((item) => {
-    // Determine if the item loaded and if it's an owned item.
-    if (!item || !item.parent) {
-      const itemName = item?.name ?? itemUuid;
-      return ui.notifications.warn(
-        `Could not find item ${itemName}. You may need to delete and recreate this macro.`
-      );
-    }
+	// Reconstruct the drop data so that we can load the item.
+	const dropData = {
+		type: 'Item',
+		uuid: itemUuid,
+	};
+	// Load the item from the uuid.
+	Item.fromDropData(dropData).then((item) => {
+		// Determine if the item loaded and if it's an owned item.
+		if (!item || !item.parent) {
+			const itemName = item?.name ?? itemUuid;
+			return ui.notifications.warn(`Could not find item ${itemName}. You may need to delete and recreate this macro.`);
+		}
 
-    // Trigger the item roll
-    item.roll();
-  });
+		// Trigger the item roll
+		item.roll();
+	});
 }

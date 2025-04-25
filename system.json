@@ -1,12 +1,12 @@
 {
-  "id": "dasu",
-  "title": "Daemon Summoner",
-  "description": "The Daemon Summoner system for FoundryVTT!",
+	"id": "dasu",
+	"title": "Daemon Summoner",
+	"description": "The Daemon Summoner system for FoundryVTT!",
 	"version": "#{VERSION}#",
-  "compatibility": {
-    "minimum": "13.340",
-    "verified": "13.340"
-  },
+	"compatibility": {
+		"minimum": "13.340",
+		"verified": "13.340"
+	},
 	"authors": [
 		{
 			"name": "Spyrella",
@@ -14,54 +14,54 @@
 			"url": "https://github.com/spyrella"
 		}
 	],
-  "documentTypes": {
-    "Actor": {
-        "character": {
-            "htmlFields": ["biography"]
-        },
-        "npc": {
-            "htmlFields": ["biography"]
-        }
-    },
-    "Item": {
-        "feature": {
-            "htmlFields": ["description"]
-        },
-        "gear": {
-            "htmlFields": ["description"]
-        },
-        "spell": {
-            "htmlFields": ["description"]
-        }
-    }
-  },
-  "flags": {
-    "hotReload": {
-      "extensions": ["css", "html", "hbs", "json"],
-      "paths": ["css", "lang", "templates"]
-    }
-  },
+	"documentTypes": {
+		"Actor": {
+			"character": {
+				"htmlFields": ["biography"]
+			},
+			"npc": {
+				"htmlFields": ["biography"]
+			}
+		},
+		"Item": {
+			"feature": {
+				"htmlFields": ["description"]
+			},
+			"gear": {
+				"htmlFields": ["description"]
+			},
+			"spell": {
+				"htmlFields": ["description"]
+			}
+		}
+	},
+	"flags": {
+		"hotReload": {
+			"extensions": ["css", "html", "hbs", "json"],
+			"paths": ["css", "lang", "templates"]
+		}
+	},
 	"url": "#{URL}#",
-  "license": "LICENSE.txt",
-  "readme": "README.md",
+	"license": "LICENSE.txt",
+	"readme": "README.md",
 	"bugs": "https://github.com/akashic-script/dasu-fvtt/issues",
-  "changelog": "CHANGELOG.md",
-  "media": [
-    {
-      "type": "setup",
-      "url": "systems/dasu/assets/anvil-impact.png",
-      "thumbnail": "systems/dasu/assets/anvil-impact.png"
-    }
-  ],
-  "esmodules": ["module/dasu.mjs"],
-  "styles": ["css/dasu.css"],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    }
-  ],
+	"changelog": "CHANGELOG.md",
+	"media": [
+		{
+			"type": "setup",
+			"url": "systems/dasu/assets/anvil-impact.png",
+			"thumbnail": "systems/dasu/assets/anvil-impact.png"
+		}
+	],
+	"esmodules": ["module/dasu.mjs"],
+	"styles": ["css/dasu.css"],
+	"languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+		}
+	],
 	"packs": [
 		{
 			"label": "Test",
@@ -76,16 +76,16 @@
 		}
 	],
 	"packFolders": [],
-  "socket": false,
+	"socket": false,
 	"manifest": "#{MANIFEST}#",
 	"download": "#{DOWNLOAD}#",
-  "background": "systems/dasu/assets/anvil-impact.png",
-  "grid": {
-    "type": 1,
-    "distance": 5,
-    "units": "ft",
-    "diagonals": 0
-  },
+	"background": "systems/dasu/assets/anvil-impact.png",
+	"grid": {
+		"type": 1,
+		"distance": 5,
+		"units": "ft",
+		"diagonals": 0
+	},
 	"primaryTokenAttribute": "hp",
 	"secondaryTokenAttribute": "wp"
 }
