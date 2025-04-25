@@ -1,0 +1,31 @@
+{
+  "name": "dasu",
+  "description": "CSS compiler for the DASU system",
+  "scripts": {
+    "build": "sass src/scss/dasu.scss css/dasu.css --style=expanded --no-source-map",
+    "watch": "sass src/scss/dasu.scss css/dasu.css --style=expanded --source-map --watch",
+    "prettier": "prettier --write .",
+		"lint": "eslint --fix .",
+		"unpack": "node ./tools/pushLDBtoYML.mjs",
+		"pack": "node ./tools/pullYMLtoLDB.mjs",
+		"prepare": "husky",
+    "createSymlinks": "node src/create-symlinks.mjs"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ],
+	"author": "Spyrella",
+	"license": "Apache-2.0",
+  "private": true,
+  "devDependencies": {
+    "@eslint/js": "^9.25.1",
+		"@foundryvtt/foundryvtt-cli": "^1.0.4",
+    "eslint": "^9.25.1",
+		"eslint-config-prettier": "^10.1.2",
+    "globals": "^16.0.0",
+		"husky": "^9.1.7",
+    "prettier": "^3.5.3",
+    "sass": "^1.87.0",
+    "js-yaml": "^4.1.0"
+  }
+}
