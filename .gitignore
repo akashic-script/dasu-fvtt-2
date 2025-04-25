@@ -1,0 +1,19 @@
+# IDE
+.idea/
+.vs/
+.vscode/
+.testing/
+
+# Node Modules
+node_modules/
+npm-debug.log
+
+# Foundry
+*.lock
+jsconfig.json
+foundry-config.yaml
+foundry
+
+/packs/**/*
+!/packs/**/*/
+!/packs/**/*.json
