@@ -1,1 +1,1 @@
-npm run lint-staged
+npx lint-staged -c lint-staged-config.mjs
