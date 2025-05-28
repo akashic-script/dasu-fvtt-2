@@ -43,7 +43,7 @@ Before submitting a bug report, ensure the following:
 
 Major thanks to the following contributors:
 
-- **Current Maintainer**: This foundry system was created by [Spyrella](https://github.com/spyrella)
+- [spyrella](https://github.com/spyrella) - Current maintainer and creator of the foundry system
 
 ## Licenses
 
