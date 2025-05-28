@@ -21,11 +21,23 @@ This is an official FoundryVTT system implementation for [Daemon Summoner](https
 4. Make sure the mainfolder is correctly named: `dasu`
 5. Restart FoundryVTT if necessary.
 
-## Feedback
+## Communication Channels
 
-Please report any bugs or suggest features using the [Issues](https://github.com/akashic-script/dasu-fvtt/issues) tab on GitHub. Feel free to review the existing suggestions and the general guidelines section before making new ones to avoid duplication.
+If you have any questions or concerns, feel free to reach out to us through the following channels:
 
-For questions and discussions, you can join the Discord Server at [#support](). Before suggesting new features, please review the existing issues to avoid duplication.
+- Discord: [Daemon Summoner Discord](https://discord.gg/) - `#fvtt-support` channel
+
+## Submitting Issues
+
+Please report any issues or suggestions on [GitHub](https://github.com/akashic-script/dasu-fvtt/issues). Follow the guidelines below for different types of issues. If you’d like to contribute to the project, please refer to the [Contributing Guidelines](https://github.com/akashic-script/dasu-fvtt/blob/main/CONTRIBUTING.md) page.
+
+### Bugs
+
+Before submitting a bug report, ensure the following:
+
+- Bugs are reproducible without active modules. If module-related, contact the module author.
+- Provide relevant hosting details, foundry/system version, and browser.
+- Include clear instructions on reproducing the issue and the expected vs actual outcome.
 
 ## Project Contributors
 
