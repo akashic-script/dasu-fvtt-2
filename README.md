@@ -2,7 +2,7 @@
 
 ![foundry-v13-red](https://img.shields.io/badge/foundry-v13-red)
 
-This is an official FoundryVTT system implementation for [Daemon Summoner](https://daemonsummoner.com/) by [Stargrand](https://github.com/Stargrand).
+This is an official FoundryVTT system implementation for [Daemon Summoner](https://daemonsummoner.com/) by [Stargrandir](https://github.com/Stargrandir).
 
 ## Installation
 
